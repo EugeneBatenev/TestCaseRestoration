@@ -3,9 +3,8 @@
 # Переменные для API эндпоинта и пользователя
 export ENDPOINT="https://testing.testops.cloud"
 export USER_TOKEN="b09e811d-7f74-4425-a67e-d19a2a390c0f"
-ALLURE_PROJECT_ID=10318
+ALLURE_PROJECT_ID=<PROJECT_ID>
 RESTORE_TEST_CASES_PER_RUN=100
-AQL_FILTER=""
 
 # Получение Bearer-токена
 echo "Obtaining Bearer token..."
@@ -25,23 +24,11 @@ fi
 
 echo "Bearer token obtained successfully: $JWT_TOKEN"
 
-# Проверка наличия AQL фильтра
-if [ -z "$AQL_FILTER" ]; then
-  echo "Warning: No AQL filter provided. Fetching all deleted test cases."
-else
-  echo "Using AQL filter: $AQL_FILTER"
-fi
-
-# Получение удалённых тест-кейсов с фильтрацией по AQL (если указана)
-if [ -z "$AQL_FILTER" ]; then
-  RESULT=$(curl -s -X GET "${ENDPOINT}/api/rs/testcase/deleted?projectId=${ALLURE_PROJECT_ID}&page=0&size=${RESTORE_TEST_CASES_PER_RUN}" \
-    --header "accept: */*" \
-    --header "Authorization: Bearer ${JWT_TOKEN}")
-else
-  RESULT=$(curl -s -X GET "${ENDPOINT}/api/rs/testcase/deleted?projectId=${ALLURE_PROJECT_ID}&page=0&size=${RESTORE_TEST_CASES_PER_RUN}&query=$(echo $AQL_FILTER)" \
-    --header "accept: */*" \
-    --header "Authorization: Bearer ${JWT_TOKEN}")
-fi
+# Получение удалённых тест-кейсов
+echo "Fetching deleted test cases..."
+RESULT=$(curl -s -X GET "${ENDPOINT}/api/rs/testcase/deleted?projectId=${ALLURE_PROJECT_ID}&page=0&size=${RESTORE_TEST_CASES_PER_RUN}" \
+  --header "accept: */*" \
+  --header "Authorization: Bearer ${JWT_TOKEN}")
 
 # Проверка, найдены ли тест-кейсы
 if [ -z "$RESULT" ]; then
