@@ -19,6 +19,9 @@ Clone the repository or download the script.
 Open the script and modify the following variables as needed:
 
 ENDPOINT: Your Allure TestOps API endpoint.
+
 USER_TOKEN: Your personal Allure TestOps token.
+
 ALLURE_PROJECT_ID: The project ID you are working with.
+
 
