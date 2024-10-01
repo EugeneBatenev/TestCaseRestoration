@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Переменные для API эндпоинта и пользователя
-export ENDPOINT="https://testing.testops.cloud"
-export USER_TOKEN="b09e811d-7f74-4425-a67e-d19a2a390c0f"
+ENDPOINT="https://testing.testops.cloud"
+USER_TOKEN="b09e811d-7f74-4425-a67e-d19a2a390c0f"
 ALLURE_PROJECT_ID=10183
 RESTORE_TEST_CASES_PER_RUN=100
 
