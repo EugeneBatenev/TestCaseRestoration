@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Переменные для API эндпоинта и пользователя
-ENDPOINT="https://testing.testops.cloud"
-USER_TOKEN="b09e811d-7f74-4425-a67e-d19a2a390c0f"
-ALLURE_PROJECT_ID=10183
+ENDPOINT="https://your_instance.com"
+USER_TOKEN="allure-token"
+ALLURE_PROJECT_ID=your_project_id
 RESTORE_TEST_CASES_PER_RUN=100
 
 # Получение Bearer-токена
